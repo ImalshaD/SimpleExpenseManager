@@ -78,7 +78,9 @@ public class TransactionsHandler implements Table {
                 ACCOUNT_NUMBER +" VARCHAR(50), "+
                 DATE+" TEXT, "+
                 EXPENSE_TYPE+" INTEGER, "+
-                AMOUNT+" DECIMAL(15,2));";
+                AMOUNT+" DECIMAL(15,2), " +
+                "FOREIGN KEY(" +ACCOUNT_NUMBER+") REFERENCES Accounts(account_num)"+
+                ");";
         return tableCreateQuery;
     }
 
