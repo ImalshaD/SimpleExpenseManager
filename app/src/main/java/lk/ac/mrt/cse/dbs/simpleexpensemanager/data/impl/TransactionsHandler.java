@@ -90,6 +90,9 @@ public class TransactionsHandler implements Table {
         return dropTableQuery;
     }
     public void addTranscation(Transaction transaction){
+        if(transaction.getAccountNo()==null){
+            return;
+        }
         openWriteTable();
         ContentValues contentValues = new ContentValues();
         contentValues.put(ACCOUNT_NUMBER,transaction.getAccountNo());

@@ -6,8 +6,8 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 public class BankDB extends SQLiteOpenHelper {
-    private static final int version=4;
-    private static final String DB_NAME="Bank";
+    private static final int version=5;
+    private static final String DB_NAME="200487B";
     private static BankDB instance=null;
     private SQLiteDatabase readTable=null;
     private SQLiteDatabase writeTable=null;

@@ -81,16 +81,21 @@ public class PersistantAccountDAO implements AccountDAO {
 
     @Override
     public void updateBalance(String accountNo, ExpenseType expenseType, double amount) throws InvalidAccountException {
-        Account account = getAccount(accountNo);
-        switch (expenseType) {
-            case EXPENSE:
-                account.setBalance(account.getBalance() - amount);
-                break;
-            case INCOME:
-                account.setBalance(account.getBalance() + amount);
-                break;
+        try {
+            Account account = getAccount(accountNo);
+            switch (expenseType) {
+                case EXPENSE:
+                    account.setBalance(account.getBalance() - amount);
+                    break;
+                case INCOME:
+                    account.setBalance(account.getBalance() + amount);
+                    break;
+            }
+            accountsHandler.update(account);
+            accountsHandler.closeWriteTable();
+        }catch (Exception e){
+            throw new InvalidAccountException(accountNo+" is not valid!");
         }
-        accountsHandler.update(account);
-        accountsHandler.closeWriteTable();
+
     }
 }
